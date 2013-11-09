@@ -267,11 +267,13 @@ public class Contact {
         }
     }
 
-    public static synchronized void dumpListeners() {
-        int i = 0;
-        Log.i(TAG, "[Contact] dumpListeners; size=" + mListeners.size());
-        for (UpdateListener listener : mListeners) {
-            Log.i(TAG, "["+ (i++) + "]" + listener);
+    public static void dumpListeners() {
+        synchronized (mListeners) {
+            int i = 0;
+            Log.i(TAG, "[Contact] dumpListeners; size=" + mListeners.size());
+            for (UpdateListener listener : mListeners) {
+                Log.i(TAG, "["+ (i++) + "]" + listener);
+            }
         }
     }
 
